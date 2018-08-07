@@ -17,9 +17,12 @@ func main() {
 	v1.Routes()
 	v2.Routes()
 
+	router := mux.NewRouter()
+	router.PathPrefix("/v1").Handler(v1Router)
+	router.PathPrefix("/v2").Handler(v2Router)
+
 	n := negroni.Classic()
-	n.UseHandler(v1.Router)
-	n.UseHandler(v2.Router)
+	n.UseHandler(router)
 
 	n.Run(":3000")
 }
