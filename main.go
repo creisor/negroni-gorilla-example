@@ -1,7 +1,9 @@
 package main
 
 import (
-	"github.com/codegangsta/negroni"
+	"log"
+	"net/http"
+
 	"github.com/creisor/negroni-gorilla-example/v1"
 	"github.com/creisor/negroni-gorilla-example/v2"
 	"github.com/gorilla/mux"
@@ -17,9 +19,9 @@ func main() {
 	v1.Routes()
 	v2.Routes()
 
-	n := negroni.Classic()
-	n.UseHandler(v1.Router)
-	n.UseHandler(v2.Router)
+	http.Handle("/v1/", v1Router)
+	http.Handle("/v2/", v2Router)
 
-	n.Run(":3000")
+	log.Println("Listening...")
+	http.ListenAndServe(":3000", nil)
 }
