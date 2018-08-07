@@ -1,10 +1,9 @@
 package main
 
 import (
-	"scratch/multiple_routes/v1"
-	"scratch/multiple_routes/v2"
-
 	"github.com/codegangsta/negroni"
+	"github.com/creisor/negroni-gorilla-example/v1"
+	"github.com/creisor/negroni-gorilla-example/v2"
 	"github.com/gorilla/mux"
 )
 
