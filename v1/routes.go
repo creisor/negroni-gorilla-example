@@ -13,10 +13,10 @@ type server struct {
 }
 
 func (s *server) Routes() {
-	s.Router.HandleFunc("/hello", s.handleV2()).Methods("HEAD", "GET")
+	s.Router.HandleFunc("/hello", s.handleV1()).Methods("HEAD", "GET")
 }
 
-func (s *server) handleV2() http.HandlerFunc {
+func (s *server) handleV1() http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, s.message)
 		return

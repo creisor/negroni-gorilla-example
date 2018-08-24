@@ -17,6 +17,8 @@ func main() {
 	v1.Routes()
 	v2.Routes()
 
+	// Order matters!  The "/" route will match anything, so the versioned routes
+	// should go first.
 	router := mux.NewRouter()
 	router.PathPrefix("/v2").Handler(v2Router)
 	router.PathPrefix("/").Handler(v1Router)
